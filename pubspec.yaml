@@ -30,6 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_svg: ^2.0.1
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -63,6 +64,13 @@ flutter:
     - assets/images/animal.png
     - assets/images/food.png
     - assets/images/travel.png
+    - assets/images/flower1.png
+    - assets/images/flower2.png
+    - assets/images/flower3.png
+    - assets/images/flower4.png
+    - assets/images/flower5.png
+    - assets/images/flower8.png
+    - assets/images/start.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -75,12 +83,15 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+  fonts:
+     - family: Happy Friday
+       fonts:
+         - asset: fonts/Happy_Friday.ttf
+         - asset: fonts/Happy_Friday_Italic.ttf
+           style: italic
+         - asset: fonts/YOUR_LOVER.ttf
+         - asset: fonts/YOUR_LOVER_ITALIC.ttf
+           style: italic
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

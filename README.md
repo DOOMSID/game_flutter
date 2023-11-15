@@ -5,7 +5,9 @@ Nonogram is a game based on Japanese classic crossword puzzles, also known as "n
 
 ## Usage
 Wireframe - ![wireframe](assets/images/nonograms_schema.png) https://excalidraw.com/#json=RwXLIuFCN8JXnYd-trREH,yCr8cq2TIxY1LThll3Z1qw
-video - lesson8 - ![lesson8](assets/videos/lesson8.gif)
+
+video - lesson9 - ![lesson9](assets/videos/lesson9.gif)
+
 
 ## Gameplay
 
