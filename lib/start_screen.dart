@@ -6,8 +6,7 @@ class MovingImagesWidget extends StatefulWidget {
   const MovingImagesWidget({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
-  _MovingImagesWidgetState createState() => _MovingImagesWidgetState();
+  State createState() => _MovingImagesWidgetState();
 }
 //
 class _MovingImagesWidgetState extends State<MovingImagesWidget>
@@ -19,15 +18,28 @@ class _MovingImagesWidgetState extends State<MovingImagesWidget>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 4),
-    )..forward();
+      duration:
+      const Duration(
+          seconds: 4),
+    )
+      ..forward();
    }
 
 
 
 
 
-  Widget buildAnimatedImage(double initialTop, double initialLeft, double initialRight, double directionMultiplierHorizontal, double directionMultiplierVertical, String imagePath, double widthImage, double heightImage) {
+  Widget buildAnimatedImage(
+      double initialTop,
+      double initialLeft,
+      double initialRight,
+      double directionMultiplierHorizontal,
+      double directionMultiplierVertical,
+      String imagePath,
+      double widthImage,
+      double heightImage,
+      )
+  {
     return Positioned(
       top: initialTop,
       left: initialLeft,
@@ -39,19 +51,20 @@ class _MovingImagesWidgetState extends State<MovingImagesWidget>
             parent: _controller,
             curve: Curves.easeInOut,
           );
-          final horizontalOffset = directionMultiplierHorizontal * curvedAnimation.value * (MediaQuery.of(context).size.width - MediaQuery.of(context).padding.left);
-          final verticalOffset = (directionMultiplierVertical - curvedAnimation.value) * (MediaQuery.of(context).size.height - MediaQuery.of(context).viewPadding.top);
+          final mediaQuery = MediaQuery.of(context);
+          final horizontalOffset = directionMultiplierHorizontal * curvedAnimation.value * (mediaQuery.size.width - mediaQuery.padding.left);
+          final verticalOffset = (directionMultiplierVertical - curvedAnimation.value) * (mediaQuery.size.height - mediaQuery.viewPadding.top);
           final scale = curvedAnimation.value > 1.0 ? 0.7 : curvedAnimation.value;
           return Transform.translate(
-              offset: Offset(horizontalOffset, verticalOffset),
-          child: Transform.scale(
-          scale: scale,
-            child: Image.asset(
-              imagePath,
-              width: widthImage,
-              height: heightImage,
+            offset: Offset(horizontalOffset, verticalOffset),
+            child: Transform.scale(
+              scale: scale,
+              child: Image.asset(
+                imagePath,
+                width: widthImage,
+                height: heightImage,
+              ),
             ),
-          ),
           );
         },
       ),
@@ -124,11 +137,56 @@ class _MovingImagesWidgetState extends State<MovingImagesWidget>
             ),
           ),
         ),
-        buildAnimatedImage(-3 * mediaQuery.viewPadding.top - kToolbarHeight, 0, 0, -0.5, 1.0, 'assets/images/flower1.png', mediaQuery.size.width, mediaQuery.size.width),
-        buildAnimatedImage(mediaQuery.size.height / 2.2, 0, 0, -0.5, 1.0, 'assets/images/flower1.png', mediaQuery.size.width, mediaQuery.size.width),
-        buildAnimatedImage(mediaQuery.size.height / 2, -8, 0, -0.5, 1.0, 'assets/images/flower2.png', mediaQuery.size.width * 0.8, mediaQuery.size.width * 0.8),
-        buildAnimatedImage(-2 * mediaQuery.viewPadding.top - kToolbarHeight, 0, 0, 0.5, 1.0, 'assets/images/flower2.png', mediaQuery.size.width * 0.8, mediaQuery.size.width * 0.8),
-        buildAnimatedImage(mediaQuery.size.height / 2.2, 0, 0, 0.4, 1.0, 'assets/images/flower4.png', mediaQuery.size.width * 0.6, mediaQuery.size.width * 0.6),
+        buildAnimatedImage(
+          -3 * mediaQuery.viewPadding.top - kToolbarHeight,
+          0,
+          0,
+          -0.5,
+          1.0,
+          'assets/images/flower1.png',
+          mediaQuery.size.width,
+          mediaQuery.size.width,
+        ),
+        buildAnimatedImage(
+          mediaQuery.size.height / 2.2,
+          0,
+          0,
+          -0.5,
+          1.0,
+          'assets/images/flower1.png',
+          mediaQuery.size.width,
+          mediaQuery.size.width,
+        ),
+        buildAnimatedImage(
+          mediaQuery.size.height / 2,
+          -8,
+          0,
+          -0.5,
+          1.0,
+          'assets/images/flower2.png',
+          mediaQuery.size.width * 0.8,
+          mediaQuery.size.width * 0.8,
+        ),
+        buildAnimatedImage(
+          -2 * mediaQuery.viewPadding.top - kToolbarHeight,
+          0,
+          0,
+          0.5,
+          1.0,
+          'assets/images/flower2.png',
+          mediaQuery.size.width * 0.8,
+          mediaQuery.size.width * 0.8,
+        ),
+        buildAnimatedImage(
+          mediaQuery.size.height / 2.2,
+          0,
+          0,
+          0.4,
+          1.0,
+          'assets/images/flower4.png',
+          mediaQuery.size.width * 0.6,
+          mediaQuery.size.width * 0.6,
+        ),
       ],
     );
   }
